@@ -5,7 +5,7 @@ import requests
 import json
 
 
-def index(request):
+def graph(request):
     print(request.META)
     for k,v in request.META.items():
         print(k,v)
@@ -39,10 +39,13 @@ def index(request):
     #     resp = resp.json()
     #     form = AuthenticationForm()
     #     context = {"resp": resp}
-    return render(request=request, template_name="beware/index.html")
+    return render(request=request, template_name="beware/graph.html")
 
 
 def results(request):
 
     return render(request=request, template_name="beware/results.html")
 
+
+def index(request):
+    return render(request, template_name="beware/index.html")

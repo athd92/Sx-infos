@@ -23,5 +23,6 @@ app_name = 'main'  # here for namespacing of urls.
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('graph/', views.graph, name='graph'),
     path('results/', views.results, name='results')
 ]
