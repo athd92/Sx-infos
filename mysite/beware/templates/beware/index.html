@@ -11,6 +11,7 @@
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="{% static 'color_admin_v4.6/frontend/template/assets/css/blog/app.min.css'%}" rel="stylesheet" />
+
 	<!-- ================== END BASE CSS STYLE ================== -->
 </head>
 <body>
@@ -49,7 +50,7 @@
 	
 	<!-- begin #page-title -->
 	<div id="page-title" class="page-title has-bg">
-		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url('../../static/img/locker.jpg') center 0px / cover no-repeat"></div>
+		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url('../../static/img/locker.jpeg') center 0px / cover no-repeat;  angle-double-left; filter: contrast(50%)"></div>
 		<div class="container">
 			<h1>The privacy information tool</h1>
 			<p>"Things we all should know"</p>
@@ -60,53 +61,87 @@
     
 
 <!-- CONTENT -->
-    <section>
-    <div class="container" style="height: 400px; margin-top: 40px;">
-        <div class="row">
-          <div class="col-sm">
-
-
-            <a href="#" class="btn btn-lg btn-primary">
+    <section>		
+		<div class="d-flex justify-content-around" style="margin:80px" >
+        <div class="row justify-content-center ">
+          <div class="col-xs-12 m-3 ">
+            <a href="#" class="btn btn-lg btn-primary" id="getIP">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fab fa-twitter fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-user-secret fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>IP address</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Version 4.0</span>
+                    <span class="d-block mb-n1" href="javascript:;" data-click="swal-info"><b>IP </b></span>
+
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
                   </span>
                 </span>
               </a>
-              
-                        </div>
-          <div class="col-sm">
-
-
-            <a href="#" class="btn btn-lg btn-primary">
+          </div>
+          <div class="col-xs-12 m-3">
+            <a href="#" class="btn btn-lg btn-primary" id="getOS">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fab fa-twitter fa-3x mr-3 text-black"></i>
+                  <i class="fab fa-windows fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>User agent</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Version 4.0</span>
+                    <span class="d-block mb-n1"><b>User Agent</b></span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
                   </span>
                 </span>
               </a>
-              
-                        </div>
-          <div class="col-sm">
-
-
-            <a href="#" class="btn btn-lg btn-primary">
+          </div>
+          <div class="col-xs-12  m-3">
+            <a href="#" class="btn btn-lg btn-primary" id="getREF">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fab fa-twitter fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-angle-double-left fa-3x mr-3 text-black"></i>
                   <span>
                     <span class="d-block mb-n1"><b>Referer</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Version 4.0</span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
+                  </span>
+                </span>
+              </a>    
+            </div>
+        </div>
+				</div>
+				
+
+
+
+
+				<div class="d-flex justify-content-around" style="margin:80px" >
+        <div class="row justify-content-center ">
+          <div class="col-xs-12 m-3 ">
+            <a href="#" class="btn btn-lg btn-primary">
+                <span class="d-flex align-items-center text-left">
+                  <i class="fas fa-lock fa-3x mr-3 text-black"></i>
+                  <span>
+                    <span class="d-block mb-n1"><b>Password </b></span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Generate</span>
                   </span>
                 </span>
               </a>
-              
-                        </div>
+          </div>
+          <div class="col-xs-12 m-3">
+            <a href="#" class="btn btn-lg btn-primary">
+                <span class="d-flex align-items-center text-left">
+                  <i class="fas fa-low-vision fa-3x mr-3 text-black"></i>
+                  <span>
+                    <span class="d-block mb-n1"><b>DNS Leak</b></span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
+                  </span>
+                </span>
+              </a>
+          </div>
+          <div class="col-xs-12  m-3">
+            <a href="#" class="btn btn-lg btn-primary">
+                <span class="d-flex align-items-center text-left">
+                  <i class="far fa-file-pdf fa-3x mr-3 text-black"></i>
+                  <span>
+                    <span class="d-block mb-n1"><b>Resume</b></span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">See and download</span>
+                  </span>
+                </span>
+              </a>    
+            </div>
         </div>
-      </div>
+				</div>
     </section>
 
 <!-- END CONTENT -->
@@ -229,5 +264,13 @@
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="{% static 'color_admin_v4.6/frontend/template/assets/js/blog/app.min.js'%}"></script>
 	<!-- ================== END BASE JS ================== -->
+	<script src="{% static '/js/index.js'%}"></script>
+
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/gritter/js/jquery.gritter.js'%}"></script>
+	<script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/sweetalert/dist/sweetalert.min.js'%}"></script>
+	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/demo/ui-modal-notification.demo.js'%}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
 </body>
 </html>
