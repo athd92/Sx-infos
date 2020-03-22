@@ -17,37 +17,7 @@ def getip(request):
         client_ip = request.META.get('REMOTE_ADDR')
         resp = JsonResponse({"data": client_ip})
         return resp
-    # client_ip = request.META.get('REMOTE_ADDR')
-    # resp = requests.get(f"http://ip-api.com/json/127.0.0.1")
-    # if resp.status_code != 200:
-    #     resp = {
-    #         "status": "success",
-    #         "country": "France",
-    #         "countryCode": "FR",
-    #         "region": "IDF",
-    #         "regionName": "Ile de France",
-    #         "city": "Paris",
-    #         "zip": "75001",
-    #         "lat": 39.0438,
-    #         "lon": -77.4874,
-    #         "timezone": "Central European Time",
-    #         "isp": "-",
-    #         "org": "-",
-    #         "as": "-",
-    #         "query": "−",
-    #     }
-    #     resp = resp.json()
-    #     context = {"resp": resp}
-    #     return render(
-    #         request=request, template_name="beware/index.html", context=context
-    #     )
-
-    # else:
-    #     resp = resp.json()
-    #     form = AuthenticationForm()
-    #     context = {"resp": resp}
-    # return render(request=request, template_name="beware/graph.html")
-
+    
 
 def getos(request):
     if request.method == 'GET':
@@ -80,6 +50,39 @@ def getreferer(request):
         referer = request.META.get('REMOTE_HTTP_REFERER')
         referer = JsonResponse({'referer': referer})
         return referer
+
+
+def getdns(request):
+    if request.method == "GET":
+        client_ip = request.META.get('REMOTE_ADDR')
+        resp = requests.get(f"http://ip-api.com/json/{client_ip}")
+        if resp.status_code != 200:
+                resp = {
+                "status": "success",
+                "country": "France",
+                "countryCode": "FR",
+                "region": "IDF",
+                "regionName": "Ile de France",
+                "city": "Paris",
+                "zip": "75001",
+                "lat": 39.0438,
+                "lon": -77.4874,
+                "timezone": "Central European Time",
+                "isp": "-",
+                "org": "-",
+                "as": "-",
+                "query": "−",
+                }
+                resp = resp.json()        
+                context = JsonResponse({"resp": resp})
+                return context
+
+        else:
+                resp = resp.json()
+                form = AuthenticationForm()        
+                context = JsonResponse({"resp": resp})
+        return context
+
 
 
 

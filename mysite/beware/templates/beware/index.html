@@ -11,6 +11,7 @@
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="{% static 'color_admin_v4.6/frontend/template/assets/css/blog/app.min.css'%}" rel="stylesheet" />
+	
 
 	<!-- ================== END BASE CSS STYLE ================== -->
 </head>
@@ -20,7 +21,7 @@
 		<!-- begin container -->
 		<div class="container">
 			<!-- begin navbar-brand -->
-			<a href="index.html" class="navbar-brand">
+			<a href="/" class="navbar-brand">
 				<span class="brand-logo"></span>
 				<span class="brand-text">
 					Beware.com
@@ -38,8 +39,8 @@
 			<div class="collapse navbar-collapse" id="header-navbar">
 				<ul class="nav navbar-nav navbar-right">
 					
-					<li><a href="about_me.html">The project</a></li>
-					<li><a href="contact_us.html">Contact</a></li>
+					<li><a href="/">The project</a></li>
+					<li><a href="/">Contact</a></li>
 				</ul>
 			</div>
 			<!-- end navbar-collapse -->
@@ -88,11 +89,11 @@
               </a>
           </div>
           <div class="col-xs-12  m-3">
-            <a href="#" class="btn btn-lg btn-primary" id="getREF">
+            <a href="#" class="btn btn-lg btn-primary" id="getDNS">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-angle-double-left fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>Referer</b></span>
+                    <span class="d-block mb-n1"><b>DNS</b></span>
                     <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
                   </span>
                 </span>
@@ -145,8 +146,6 @@
     </section>
 
 <!-- END CONTENT -->
-
-
 
 
 
@@ -258,6 +257,23 @@
 		</div>
 		<!-- end container -->
 	</div>
+	<!-- end panel -->
+			
+			<div class="alert bg-inverse-transparent-9 text-white position-fixed rounded-0 position-fixed mb-0 d-md-flex align-items-center pl-xl-5 pr-xl-5 pt-xl-4 pt-4 pb-xl-4" style="left: 0; right: 0; bottom: 0; z-index: 1020;">
+				<div class="flex-fill">
+					<h4>This website uses cookies</h4>
+					<p class="mb-0">
+						We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+					</p>
+				</div>
+				<div class="pl-xl-4 pt-xl-0 pt-3">
+					<a href="#" class="btn btn-outline-white btn-lg width-150" data-dismiss="alert">Accept</a>
+				</div>
+			</div>
+		</div>
+		<!-- end #content -->
+
+
 	<!-- end #footer-copyright -->
 	
     
@@ -272,5 +288,13 @@
 	<script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/sweetalert/dist/sweetalert.min.js'%}"></script>
 	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/demo/ui-modal-notification.demo.js'%}"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
+
+{% comment %} 
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/app.min.js'%}"></script>
+	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/theme/default.min.js'%}"></script>
+	<!-- ================== END BASE JS ================== --> {% endcomment %}
+
+
 </body>
 </html>
