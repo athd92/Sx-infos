@@ -159,3 +159,6 @@ def login_request(request):
             template_name="beware/login.html",
             context={"form": form}
         )
+
+def contact(request):
+    return render(request, template_name="beware/contact.html")

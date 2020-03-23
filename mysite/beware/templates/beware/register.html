@@ -13,6 +13,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="{% static 'color_admin_v4.6/admin/template/assets/css/default/app.min.css'%}" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
+    <link href="{% static '/css/register.css'%}%" rel="stylesheet">
+
 </head>
 <body class="pace-top">
 	<!-- begin #page-loader -->
@@ -27,10 +29,10 @@
 		<div class="register register-with-news-feed">
 			<!-- begin news-feed -->
 			<div class="news-feed">
-				<div class="news-image" style="background-image: url(../assets/img/login-bg/login-bg-15.jpg)"></div>
+				<div class="news-image" style="background-image: url('{% static 'img/earth.jpg'%}')"></div>
 				<div class="news-caption">
-					<h4 class="caption-title"><b>Beware.com</b> The privacy information tool</h4>
-					<p>
+					<h4 class="caption-title content "><b></b> The privacy information tool</h4>
+					<p class="content">
                     Creating an account gives you a full access of the service
 					</p>
 				</div>
@@ -119,5 +121,6 @@
 	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/app.min.js'%}"></script>
 	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/theme/default.min.js'%}"></script>
 	<!-- ================== END BASE JS ================== -->
+    <script src="{% static 'js/register.js'%}"></script>
 </body>
 </html>

@@ -193,9 +193,9 @@ $('#getDNS').click(function(e){
 				console.log(data)
 				e.preventDefault();
 				swal({
-					title: 'Domain Name System',
-					text: 'Your connexion origin : '+ data.resp.country + ' ' + data.resp.city,
-					icon: 'success',
+					title: 'Account needed',
+					text: 'To access to the main service, you need to be logged in. Created an account? ',
+					icon: 'warning',
 					buttons: {
 						confirm: {
 							text: 'Dismiss',

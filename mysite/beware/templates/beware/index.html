@@ -40,7 +40,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					
 					<li><a href="/">The project</a></li>
-					<li><a href="/">Contact</a></li>
+					<li><a href="contact/">Contact</a></li>
 
 					{% if user.is_authenticated %}
 					<li><a href="logout/">Logout</a></li>
@@ -103,7 +103,7 @@
                 <span class="d-flex align-items-center text-left">
                   <i class="fas fa-eye  fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>DNS</b></span>
+                    <span class="d-block mb-n1"><b>Full infos</b></span>
                     <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
                   </span>
                 </span>
@@ -111,11 +111,11 @@
             </div>
 			{% else %}
           <div class="col-xs-12  m-3">
-            <a href="#" class="btn btn-lg btn-secondary " id="getDNS">
+            <a href="#" class="btn btn-lg btn-warning " id="getDNS">
                 <span class="d-flex align-items-center text-left">
                   <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>DNS</b></span>
+                    <span class="d-block mb-n1"><b>Full infos</b></span>
                     <span class="f-s-12 f-w-600 text-white-transparent-7">Account requested</span>
                   </span>
                 </span>
@@ -242,7 +242,8 @@
 		<!-- end container -->
 	</div>
 	<!-- end panel -->
-			
+			{% if user.is_authenticated%}
+			{% else %}
 			<div class="alert bg-inverse-transparent-9 text-white position-fixed rounded-0 position-fixed mb-0 d-md-flex align-items-center pl-xl-5 pr-xl-5 pt-xl-4 pt-4 pb-xl-4" style="left: 0; right: 0; bottom: 0; z-index: 1020;">
 				<div class="flex-fill">
 					<h4>This website uses cookies</h4>
@@ -255,6 +256,7 @@
 				</div>
 			</div>
 		</div>
+		{%endif%}
 		<!-- end #content -->
 
 
