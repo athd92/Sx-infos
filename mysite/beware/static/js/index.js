@@ -24,7 +24,7 @@ $('#getIP').click(function(e){
 				e.preventDefault();
 				swal({
 					title: 'Internet address Protocol',
-					text: 'Your public IP address is ' + data.data +' and being collected! ',
+					text: 'Your public IP address is : ' + data.data ,
 					icon: 'success',
 					buttons: {
 						confirm: {

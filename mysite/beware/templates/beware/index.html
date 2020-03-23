@@ -15,7 +15,7 @@
 
 	<!-- ================== END BASE CSS STYLE ================== -->
 </head>
-<body>
+<body style='background-color:#d9e0e7;'>
 	<!-- begin #header -->
 	<div id="header" class="header navbar navbar-default navbar-expand-lg navbar-fixed-top">
 		<!-- begin container -->
@@ -41,6 +41,15 @@
 					
 					<li><a href="/">The project</a></li>
 					<li><a href="/">Contact</a></li>
+
+					{% if user.is_authenticated %}
+					<li><a href="logout/">Logout</a></li>
+					{% else %}
+					<li><a href="login/">Login</a></li>
+					<li><a href="register/">Register</a></li>
+
+					{%endif%}
+
 				</ul>
 			</div>
 			<!-- end navbar-collapse -->
@@ -88,10 +97,11 @@
                 </span>
               </a>
           </div>
+		  {% if user.is_authenticated %}
           <div class="col-xs-12  m-3">
             <a href="#" class="btn btn-lg btn-primary" id="getDNS">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-eye  fa-3x mr-3 text-black"></i>
                   <span>
                     <span class="d-block mb-n1"><b>DNS</b></span>
                     <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
@@ -99,50 +109,24 @@
                 </span>
               </a>    
             </div>
-        </div>
-				</div>
-				
-
-
-
-
-				<div class="d-flex justify-content-around" style="margin:80px" >
-        <div class="row justify-content-center ">
-          <div class="col-xs-12 m-3 ">
-            <a href="#" class="btn btn-lg btn-primary">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-lock fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Password </b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Generate</span>
-                  </span>
-                </span>
-              </a>
-          </div>
-          <div class="col-xs-12 m-3">
-            <a href="#" class="btn btn-lg btn-primary">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-low-vision fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>DNS Leak</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
-                  </span>
-                </span>
-              </a>
-          </div>
+			{% else %}
           <div class="col-xs-12  m-3">
-            <a href="#" class="btn btn-lg btn-primary">
+            <a href="#" class="btn btn-lg btn-secondary " id="getDNS">
                 <span class="d-flex align-items-center text-left">
-                  <i class="far fa-file-pdf fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>Resume</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">See and download</span>
+                    <span class="d-block mb-n1"><b>DNS</b></span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Account requested</span>
                   </span>
                 </span>
               </a>    
             </div>
+			{% endif%}
+
         </div>
-				</div>
+	</div>
+				
+
     </section>
 
 <!-- END CONTENT -->
