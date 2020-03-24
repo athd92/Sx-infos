@@ -1,18 +1,36 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 import requests
+from django.contrib.auth.models import User
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse, HttpResponse
 from .forms import UserCustomLoginForm
+import time
+import whois
+import io
+from reportlab.pdfgen import canvas
 
 
-def graph(request):
-    print(request.META)
-    for k, v in request.META.items():
-        print(k, v)
 
+
+def charts(request):
+    if request.user.is_authenticated:
+        user = request.user.username
+        os = request.user_agent.os.family  # returns 'iOS'
+        user_selected = User.objects.get(username=user)
+        last_conn = user_selected.last_login
+        print('')
+        print('LAST')
+        print(last_conn)
+        context = {
+            'last_conn': last_conn,
+            'user': user,
+            'os':os
+        }
+        return render(request, 'beware/charts.html', context)
+    else:
+        return redirect('/')
 
 def getip(request):
     if request.method == "GET":
@@ -160,5 +178,32 @@ def login_request(request):
             context={"form": form}
         )
 
+
+
+
+def graph(request):
+    return render(request, template_name="beware/charts.html")
+
+
 def contact(request):
     return render(request, template_name="beware/contact.html")
+
+def create_pdf(request):
+    # Create a file-like buffer to receive PDF data.
+    buffer = io.BytesIO()
+
+    # Create the PDF object, using the buffer as its "file."
+    p = canvas.Canvas(buffer)
+
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    p.drawString(100, 100, "Hello world.")
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename='hello.pdf')

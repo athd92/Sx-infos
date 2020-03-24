@@ -27,6 +27,7 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('logout/', views.logout_request, name="logout_request"),
     path('contact/', views.contact, name="contact"),
+    path('charts/', views.charts, name="charts"),
     path('graph/', views.graph, name='graph'),
     path('getip/', views.getip, name="getip"),
     path('getos/', views.getos, name="getos"),
