@@ -19,3 +19,11 @@ class UserCustomLoginForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    content = forms.CharField(
+        required=True,
+        widget=forms.Textarea
+    )

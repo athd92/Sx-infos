@@ -5,7 +5,7 @@ import requests
 from django.contrib.auth.models import User
 import json
 from django.http import JsonResponse, FileResponse, HttpResponse
-from .forms import UserCustomLoginForm
+from .forms import UserCustomLoginForm, ContactForm
 import time
 import whois
 import io
@@ -20,9 +20,6 @@ def charts(request):
         os = request.user_agent.os.family  # returns 'iOS'
         user_selected = User.objects.get(username=user)
         last_conn = user_selected.last_login
-        print('')
-        print('LAST')
-        print(last_conn)
         context = {
             'last_conn': last_conn,
             'user': user,
@@ -186,7 +183,11 @@ def graph(request):
 
 
 def contact(request):
-    return render(request, template_name="beware/contact.html")
+    form = ContactForm
+    return render(request, 'beware/contact.html', {
+        'form': form,
+    })
+
 
 def create_pdf(request):
     # Create a file-like buffer to receive PDF data.

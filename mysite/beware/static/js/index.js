@@ -81,7 +81,7 @@ $('#getOS').click(function(e){
 				e.preventDefault();
 				swal({
 					title: 'User agent creds',
-					text: 'Your using a '+ data.device + ' with ' + data.operating_system + ' ' + data.operating_system_version + ' and your navigator is ' + data.browser + ' ' + data.browser_version,
+					text: 'Your using '+ data.operating_system + ' ' + data.operating_system_version + ' and your navigator is ' + data.browser + ' ' + data.browser_version,
 					icon: 'success',
 					buttons: {
 						confirm: {
