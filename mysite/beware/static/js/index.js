@@ -11,7 +11,7 @@ $('#getIP').click(function(e){
 	console.log('click')
 	$.ajax({                    // ajax request from input data
 		type:'GET',
-		url:`${window.origin}/getip`,
+		url:`${window.origin}/get_next_launch`,
 		beforeSend:function(){            
 				console.log('start');
 		},
@@ -23,9 +23,9 @@ $('#getIP').click(function(e){
 				console.log(data)
 				e.preventDefault();
 				swal({
-					title: 'Internet address Protocol',
-					text: 'Your public IP address is : ' + data.data ,
-					icon: 'success',
+					title: 'Next launch',
+					text: '' + data.data.machine +' will launched by ' + data.data.mission_name+' the ' + data.data.date,
+					icon: 'info',
 					buttons: {
 						confirm: {
 							text: 'Dismiss',
@@ -68,7 +68,7 @@ $('#getOS').click(function(e){
 	console.log('click')
 	$.ajax({                    // ajax request from input data
 		type:'GET',
-		url:`${window.origin}/getos`,
+		url:`${window.origin}/get_random`,
 		beforeSend:function(){            
 				console.log('start');
 		},
@@ -80,8 +80,8 @@ $('#getOS').click(function(e){
 				console.log(data)
 				e.preventDefault();
 				swal({
-					title: 'User agent creds',
-					text: 'Your using '+ data.operating_system + ' ' + data.operating_system_version + ' and your navigator is ' + data.browser + ' ' + data.browser_version,
+					title: data.data.title,
+					text: data.data.details,
 					icon: 'success',
 					buttons: {
 						confirm: {
@@ -193,9 +193,9 @@ $('#getDNS').click(function(e){
 				console.log(data)
 				e.preventDefault();
 				swal({
-					title: 'Account needed',
-					text: 'To access to the main service, you need to be logged in. Created an account? ',
-					icon: 'warning',
+					title: 'Domain Name System',
+					text: 'Your connexion origin : '+ data.resp.country + ' ' + data.resp.city,
+					icon: 'success',
 					buttons: {
 						confirm: {
 							text: 'Dismiss',

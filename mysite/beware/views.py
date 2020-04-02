@@ -5,13 +5,12 @@ import requests
 from django.contrib.auth.models import User
 import json
 from django.http import JsonResponse, FileResponse, HttpResponse
-from .forms import UserCustomLoginForm, ContactForm
+from .forms import UserCustomLoginForm, ContactForm, SearchForm
 import time
 import whois
 import io
 from reportlab.pdfgen import canvas
-
-
+import random
 
 
 def charts(request):
@@ -20,61 +19,53 @@ def charts(request):
         os = request.user_agent.os.family  # returns 'iOS'
         user_selected = User.objects.get(username=user)
         last_conn = user_selected.last_login
-        context = {
-            'last_conn': last_conn,
-            'user': user,
-            'os':os
-        }
-        return render(request, 'beware/charts.html', context)
+        context = {"last_conn": last_conn, "user": user, "os": os}
+        return render(request, "beware/charts.html", context)
     else:
-        return redirect('/')
+        return redirect("/")
 
-def getip(request):
+
+def get_next_launch(request):
+    # if request.method == "GET":
+    #     client_ip = request.META.get("REMOTE_ADDR")
+    #     resp = JsonResponse({"data": client_ip})
+    #     return resp
     if request.method == "GET":
-        client_ip = request.META.get('REMOTE_ADDR')
-        resp = JsonResponse({"data": client_ip})
-        return resp
-    
+        resp = requests.get("https://api.spacexdata.com/v3/launches/next")
+        resp = resp.json()
+        mission_name = resp.get("mission_name")
+        machine = resp.get("rocket").get("rocket_id")
+        date = resp.get("launch_date_utc")
+        date = date[0:10]
+    context = {"mission_name": mission_name, "machine": machine, "date": date}
+    resp = JsonResponse({"data": context})
+    return resp
 
-def getos(request):
-    if request.method == 'GET':
 
-        # returns Browser(family=u'Mobile Safari', version=(5, 1), version_string='5.1')
-        request.user_agent.browser
-        browser = request.user_agent.browser.family  # returns 'Mobile Safari'
-        browser_version = request.user_agent.browser.version  # returns (5, 1)
-
-        # returns OperatingSystem(family=u'iOS', version=(5, 1), version_string='5.1')
-        request.user_agent.os
-        operating_system = request.user_agent.os.family  # returns 'iOS'
-        # returns (5, 1)
-        operating_system_version = request.user_agent.os.version
-
-        request.user_agent.device  # returns Device(family='iPhone')
-        device = request.user_agent.device.family  # returns 'iPhone'
-        user_agent = JsonResponse({"browser": browser,
-                                   "browser_version": browser_version,
-                                   "operating_system": operating_system,
-                                   "operating_system_version": operating_system_version,
-                                   "device": device,
-                                   })
-
-        return user_agent
+def get_random(request):
+    x = random.randrange(4)
+    resp = requests.get(f"https://api.spacexdata.com/v3/history/{x}")
+    resp = resp.json()
+    story_title = resp.get("title")
+    details = resp.get("details")
+    context = {"title": story_title, "details": details}
+    resp = JsonResponse({"data": context})
+    return resp
 
 
 def getreferer(request):
-    if request.method == 'GET':
-        referer = request.META.get('REMOTE_HTTP_REFERER')
-        referer = JsonResponse({'referer': referer})
+    if request.method == "GET":
+        referer = request.META.get("REMOTE_HTTP_REFERER")
+        referer = JsonResponse({"referer": referer})
         return referer
 
 
 def getdns(request):
     if request.method == "GET":
-        client_ip = request.META.get('REMOTE_ADDR')
+        client_ip = request.META.get("REMOTE_ADDR")
         resp = requests.get(f"http://ip-api.com/json/{client_ip}")
         if resp.status_code != 200:
-                resp = {
+            resp = {
                 "status": "success",
                 "country": "France",
                 "countryCode": "FR",
@@ -89,19 +80,16 @@ def getdns(request):
                 "org": "-",
                 "as": "-",
                 "query": "−",
-                }
-                resp = resp.json()        
-                context = JsonResponse({"resp": resp})
-                return context
+            }
+            resp = resp.json()
+            context = JsonResponse({"resp": resp})
+            return context
 
         else:
-                resp = resp.json()
-                form = AuthenticationForm()        
-                context = JsonResponse({"resp": resp})
+            resp = resp.json()
+            form = AuthenticationForm()
+            context = JsonResponse({"resp": resp})
         return context
-
-
-
 
 
 def results(request):
@@ -110,7 +98,10 @@ def results(request):
 
 
 def index(request):
-    return render(request, template_name="beware/index.html")
+    form = SearchForm()
+    context = {"form": form}
+    return render(request, "beware/index.html", context)
+
 
 def register(request):
 
@@ -132,7 +123,7 @@ def register(request):
             )
 
     form = UserCustomLoginForm()
-    return render(request, "beware/register.html", {'form':form})
+    return render(request, "beware/register.html", {"form": form})
 
 
 def logout_request(request):
@@ -144,6 +135,7 @@ def logout_request(request):
         return redirect("/")
     else:
         return redirect("/")
+
 
 def login_request(request):
     """
@@ -170,12 +162,8 @@ def login_request(request):
                 pass
         form = AuthenticationForm()
         return render(
-            request=request,
-            template_name="beware/login.html",
-            context={"form": form}
+            request=request, template_name="beware/login.html", context={"form": form}
         )
-
-
 
 
 def graph(request):
@@ -184,9 +172,7 @@ def graph(request):
 
 def contact(request):
     form = ContactForm
-    return render(request, 'beware/contact.html', {
-        'form': form,
-    })
+    return render(request, "beware/contact.html", {"form": form,})
 
 
 def create_pdf(request):
@@ -207,4 +193,23 @@ def create_pdf(request):
     # FileResponse sets the Content-Disposition header so that browsers
     # present the option to save the file.
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+
+
+def search(request):
+    form = SearchForm(request.POST)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                query = form.cleaned_data.get("search")
+                print("")
+                print(query)
+
+                user = request.user.username
+                os = request.user_agent.os.family  # returns 'iOS'
+                user_selected = User.objects.get(username=user)
+                last_conn = user_selected.last_login
+                context = {"last_conn": last_conn, "user": user, "os": os}
+                return render(request, "beware/charts.html", context)
+    else:
+        return redirect("/")

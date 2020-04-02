@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     {% load static %}
+	{% load crispy_forms_tags%}
+
 	<meta charset="utf-8" />
-	<title>Beware.com | The privacy information tool</title>
+	<title>SX-infos | SpaceX info tool</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -26,7 +28,7 @@
 			<a href="/" class="navbar-brand">
 				<span class="brand-logo"></span>
 				<span class="brand-text">
-					Beware.com
+					SX-infos.com
 				</span>
 			</a>
 			<!-- end navbar-brand -->
@@ -62,9 +64,9 @@
 	
 	<!-- begin #page-title -->
 	<div id="page-title" class="page-title has-bg">
-		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url('../../static/img/locker.jpeg') center 0px / cover no-repeat;  angle-double-left; filter: contrast(50%)"></div>
+		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url('../../static/img/background.jpg') center 0px / cover no-repeat;  angle-double-left; filter: contrast(50%)"></div>
 		<div class="container">
-			<h1>The privacy information tool</h1>
+			<h1>SpaceX news</h1>
 			<p>"Check what we see"</p>
 		</div>
 	</div>
@@ -74,15 +76,36 @@
 
 <!-- CONTENT -->
 
-    <section>	
+    <section id="space">	
+
+</div>
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form ">
+                    <div class="px-2">
+						<h3 class="text-success m-5">SEARCH</h3>
+                        <form action="/search/" class="justify-content-center m-5" method="POST">
+						    {% csrf_token %}
+                            <div class="form-group">
+		                    {{form|crispy}}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 		<div class="d-flex justify-content-around " style="margin:80px" >
         <div class="row justify-content-center ">
           <div class="col-xs-12 m-3 ">
             <a href="#" class="btn btn-lg btn-primary" id="getIP">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-user-secret fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-space-shuttle fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1" href="javascript:;" data-click="swal-info"><b>IP </b></span>
+                    <span class="d-block mb-n1" href="javascript:;" data-click="swal-info"><b>Next launches </b></span>
 
                     <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
                   </span>
@@ -93,10 +116,10 @@
           <div class="col-xs-12 m-3">
             <a href="#" class="btn btn-lg btn-primary" id="getOS">
                 <span class="d-flex align-items-center text-left">
-                  <i class="fab fa-windows fa-3x mr-3 text-black"></i>
+                  <i class="fas fa-history fa-3x mr-3 text-black"></i>
                   <span>
-                    <span class="d-block mb-n1"><b>User Agent</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
+                    <span class="d-block mb-n1"><b>Random fact</b></span>
+                    <span class="f-s-12 f-w-600 text-white-transparent-7">Random story</span>
                   </span>
                 </span>
               </a>
@@ -130,8 +153,11 @@
         </div>
 	</div>
 				
+</section>
 
-    </section>
+
+
+
 
 <!-- END CONTENT -->
 
@@ -150,11 +176,8 @@
 					<div class="section-container">
 						<h4 class="footer-title">Links</h4>
 						<ul class="categories">
-							<li><a href="#">Quadrature du net</a></li>
-							<li><a href="#">Zataz</a></li>
-							<li><a href="#">Korben</a></li>
-							<li><a href="#">DNS Leak</a></li>
-							<li><a href="#">WTFISMYIP</a></li>
+							<li><a href="#">SpaceX</a></li>
+							<li><a href="#">Nasa</a></li>
 						</ul>
 					</div>
 					<!-- end section-container -->
@@ -169,10 +192,7 @@
 							<li><a href="#">June 2018</a> <span class="total">(102)</span></li>
 							<li><a href="#">May 2018</a> <span class="total">(46)</span></li>
 							<li><a href="#">April 2018</a> <span class="total">(84)</span></li>
-							<li><a href="#">March 2018</a> <span class="total">(67)</span></li>
-							<li><a href="#">February 2018</a> <span class="total">(99)</span></li>
-							<li><a href="#">January 2018</a> <span class="total">(113)</span></li>
-							<li><a href="#">December 2017</a> <span class="total">(25)</span></li>
+							
 						</ul>
 					</div>
 					<!-- end section-container -->

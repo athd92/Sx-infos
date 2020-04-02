@@ -27,3 +27,10 @@ class ContactForm(forms.Form):
         required=True,
         widget=forms.Textarea
     )
+
+
+class SearchForm(forms.Form):
+
+    search = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'special','placeholder':'example: Falcon'}), label=False)
+

@@ -29,9 +29,10 @@ urlpatterns = [
     path('contact/', views.contact, name="contact"),
     path('charts/', views.charts, name="charts"),
     path('graph/', views.graph, name='graph'),
-    path('getip/', views.getip, name="getip"),
-    path('getos/', views.getos, name="getos"),
+    path('get_next_launch/', views.get_next_launch, name="get_next_launch"),
+    path('get_random/', views.get_random, name="get-random"),
     path('getdns/', views.getdns, name="getdns"),
     path('getreferer/', views.getreferer, name="getreferer"),
-    path('results/', views.results, name='results')
+    path('results/', views.results, name='results'),
+    path('search/', views.search, name='search')
 ]
