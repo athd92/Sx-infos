@@ -173,10 +173,6 @@ $('#getREF').click(function(e){
 });
 
 
-
-
-
-
 $('#getDNS').click(function(e){
 	console.log('click')
 	$.ajax({                    // ajax request from input data

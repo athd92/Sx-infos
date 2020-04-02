@@ -1,0 +1,15 @@
+img {
+    width: 200px; /* You can set the dimensions to whatever you want */
+    height: 200px;
+    object-fit: cover;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+}
+img:hover {
+    z-index: 9999;
+    transition: transform .2s ease;
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) 
+    
+    */
+  }

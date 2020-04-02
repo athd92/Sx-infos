@@ -11,6 +11,7 @@ import whois
 import io
 from reportlab.pdfgen import canvas
 import random
+from .dumper import DumpInfos
 
 
 def charts(request):
@@ -203,13 +204,20 @@ def search(request):
             if form.is_valid():
                 query = form.cleaned_data.get("search")
                 print("")
-                print(query)
-
+                search = DumpInfos(query)
+                infos = search.get_images()
+                print('INFO NAME')
+                print(infos.get('name'))
                 user = request.user.username
                 os = request.user_agent.os.family  # returns 'iOS'
                 user_selected = User.objects.get(username=user)
                 last_conn = user_selected.last_login
-                context = {"last_conn": last_conn, "user": user, "os": os}
+                context = {"last_conn": last_conn, "user": user, "os": os, 'infos':infos}
                 return render(request, "beware/charts.html", context)
     else:
         return redirect("/")
+
+
+
+def render_category(request):
+    pass
