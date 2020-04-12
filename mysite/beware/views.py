@@ -200,31 +200,39 @@ def create_pdf(request):
 
 def search(request):
     form = SearchForm(request.POST)
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            if form.is_valid():
-                query = form.cleaned_data.get("search")
-                print("")
-                infos = []
-                search = DumpInfos(query)
-                result = Specifications.objects.filter(category=query)
-                for i in result:
-                    infos.append(i.all_datas)
-                    print(i.all_datas)
-                user = request.user.username
-                os = request.user_agent.os.family  # returns 'iOS'
-                user_selected = User.objects.get(username=user)
-                last_conn = user_selected.last_login
-                context = {
-                    "last_conn": last_conn,
-                    "user": user,
-                    "os": os,
-                    "infos": infos,
-                    "spec": query,
-                }
-                return render(request, "beware/charts.html", context)
-    else:
-        return redirect("/")
+    if request.method == "POST":
+        if form.is_valid():
+            query = form.cleaned_data.get("search")
+            print("")
+            print(query)
+            infos = []
+            search = DumpInfos(query)
+            result = Specifications.objects.all()
+            print(result)
+            final = []
+            for i in result:
+                print('')
+                x = i.all_datas
+                try:
+                    for item in x.items():
+                        print("")
+                        print(item)
+                except:
+                    pass
+
+            
+            user = request.user.username
+            os = request.user_agent.os.family  # returns 'iOS'
+            user_selected = User.objects.get(username=user)
+            last_conn = user_selected.last_login
+            context = {
+                "last_conn": last_conn,
+                "user": user,
+                "os": os,
+                "infos": infos,
+                "spec": query,
+            }
+            return render(request, "beware/charts.html", context)
 
 
 def render_category(request):
