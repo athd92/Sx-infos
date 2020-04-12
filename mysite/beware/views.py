@@ -12,6 +12,7 @@ import io
 from reportlab.pdfgen import canvas
 import random
 from .dumper import DumpInfos
+from beware.models import Specifications
 
 
 def charts(request):
@@ -204,19 +205,26 @@ def search(request):
             if form.is_valid():
                 query = form.cleaned_data.get("search")
                 print("")
+                infos = []
                 search = DumpInfos(query)
-                infos = search.get_images()
-                print('INFO NAME')
-                print(infos.get('name'))
+                result = Specifications.objects.filter(category=query)
+                for i in result:
+                    infos.append(i.all_datas)
+                    print(i.all_datas)
                 user = request.user.username
                 os = request.user_agent.os.family  # returns 'iOS'
                 user_selected = User.objects.get(username=user)
                 last_conn = user_selected.last_login
-                context = {"last_conn": last_conn, "user": user, "os": os, 'infos':infos}
+                context = {
+                    "last_conn": last_conn,
+                    "user": user,
+                    "os": os,
+                    "infos": infos,
+                    "spec": query,
+                }
                 return render(request, "beware/charts.html", context)
     else:
         return redirect("/")
-
 
 
 def render_category(request):

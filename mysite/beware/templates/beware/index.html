@@ -1,412 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    {% load static %}
-	{% load crispy_forms_tags%}
+    {% load static %} {% load crispy_forms_tags%}
 
-	<meta charset="utf-8" />
-	<title>SX-infos | SpaceX info tool</title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	
-	<!-- ================== BEGIN BASE CSS STYLE ================== -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
- 	<link rel="stylesheet" type="text/css" href="{% static '/css/index.css'%}"> 
- 	<link href="{% static 'color_admin_v4.6/frontend/template/assets/css/blog/app.min.css'%}" rel="stylesheet" />
-	
+    <meta charset="utf-8" />
+    <title>SX-infos | SpaceX info tool</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
 
-	<!-- ================== END BASE CSS STYLE ================== -->
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/index.css'%}">
+    <link href="{% static 'color_admin_v4.6/frontend/template/assets/css/blog/app.min.css'%}" rel="stylesheet" />
+
+
+    <!-- ================== END BASE CSS STYLE ================== -->
 </head>
+
 <body style='background-color:#d9e0e7;'>
 
-	<!-- begin #header -->
-	<div id="header" class="header navbar navbar-default navbar-expand-lg navbar-fixed-top">
-		<!-- begin container -->
-		<div class="container">
-			<!-- begin navbar-brand -->
-			<a href="/" class="navbar-brand">
-				<span class="brand-logo"></span>
-				<span class="brand-text">
+    <!-- begin #header -->
+    <div id="header" class="header navbar navbar-default navbar-expand-lg navbar-fixed-top">
+        <!-- begin container -->
+        <div class="container">
+            <!-- begin navbar-brand -->
+            <a href="/" class="navbar-brand">
+                <span class="brand-logo"></span>
+                <span class="brand-text">
 					SX-infos.com
 				</span>
-			</a>
-			<!-- end navbar-brand -->
-			<!-- begin navbar-toggle -->
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
+            </a>
+            <!-- end navbar-brand -->
+            <!-- begin navbar-toggle -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<!-- end navbar-toggle -->
-			<!-- begin navbar-collapse -->
-			<div class="collapse navbar-collapse" id="header-navbar">
-				<ul class="nav navbar-nav navbar-right">
-					
-					<li><a href="/">The project</a></li>
-					<li><a href="contact/">Contact</a></li>
+            <!-- end navbar-toggle -->
+            <!-- begin navbar-collapse -->
+            <div class="collapse navbar-collapse" id="header-navbar">
+                <ul class="nav navbar-nav navbar-right">
 
-					{% if user.is_authenticated %}
-					<li><a href="logout/">Logout</a></li>
-					{% else %}
-					<li><a href="login/">Login</a></li>
-					<li><a href="register/">Register</a></li>
+                    <li><a href="/">The project</a></li>
+                    <li><a href="contact/">Contact</a></li>
 
-					{%endif%}
+                    {% if user.is_authenticated %}
+                    <li><a href="logout/">Logout</a></li>
+                    {% else %}
+                    <li><a href="login/">Login</a></li>
+                    <li><a href="register/">Register</a></li>
 
-				</ul>
-			</div>
-			<!-- end navbar-collapse -->
-		</div>
-		<!-- end container -->
-	</div>
-	<!-- end #header -->
-	
-	<!-- begin #page-title -->
-	<div id="page-title" class="page-title has-bg">
-		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url('../../static/img/background.jpg') center 0px / cover no-repeat;  angle-double-left; filter: contrast(50%)"></div>
-		<div class="container">
-			<h1>SpaceX news</h1>
-			<p>"Check what we see"</p>
-		</div>
-	</div>
-	<!-- end #page-title -->
-    
+                    {%endif%}
 
+                </ul>
+            </div>
+            <!-- end navbar-collapse -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #header -->
 
-<!-- strart search -->
-    <section id="space">	
-</div>
-    <div id="cover-caption">
+    <!-- begin #page-title -->
+    <div id="page-title" class="page-title has-bg">
+        <div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url('../../static/img/background.jpg') center 0px / cover no-repeat;  angle-double-left;"></div>
         <div class="container">
-            <div class="row text-white">
-                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form ">
-                    <div class="px-2">
-						<h3 class="text-success m-5">SEARCH</h3>
-                        <form action="/search/" class="justify-content-center m-5" method="POST">
-						    {% csrf_token %}
-                            <div class="form-group">
-		                    {{form|crispy}}
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg">search</button>
-                        </form>
+            <h1>SpaceX news</h1>
+            <p>"Check what we see"</p>
+        </div>
+    </div>
+    <!-- end #page-title -->
+
+
+
+    <!-- strart search -->
+    <section id="space">
+        </div>
+        <div id="cover-caption">
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form ">
+                        <div class="px-2">
+                            <h3 class="text-success m-5">SEARCH</h3>
+                            <form action="/search/" class="justify-content-center m-5" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{form|crispy}}
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg">search</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<!-- end search -->
+        <!-- end search -->
 
-<!-- start buttons -->
-		<div class="d-flex justify-content-around " style="margin-top:80px" >
-        <div class="row justify-content-center ">
-          <div class="col-xs-12 m-3 ">
-            <a href="#" class="btn btn-lg btn-primary" id="getIP">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-space-shuttle fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1" href="javascript:;" data-click="swal-info"><b>Capsules</b></span>
+        <!-- start buttons -->
+        <div class="d-flex justify-content-around " style="margin-top:80px">
+            <div class="row justify-content-center ">
+                <div class="col-xs-12 m-3 ">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Capsules</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
 
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
-                  </span>
-                </span>
-              </a>
-			  
-          </div>
-          <div class="col-xs-12 m-3">
-            <a href="#" class="btn btn-lg btn-primary" id="getOS">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-history fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Cores</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Cores</span>
-                  </span>
-                </span>
-              </a>
-          </div>
-          <div class="col-xs-12  m-3">
-            <a href="#" class="btn btn-lg btn-warning " id="getDNS">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Dragons</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Account requested</span>
-                  </span>
-                </span>
-              </a>    
+                </div>
+                <div class="col-xs-12 m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Cores</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12  m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Dragons</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-	</div>
 
 
-		<div class="d-flex justify-content-around"  >
-        <div class="row justify-content-center ">
-          <div class="col-xs-12 m-3 ">
-            <a href="#" class="btn btn-lg btn-primary" id="getIP">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-space-shuttle fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1" href="javascript:;" data-click="swal-info"><b>History</b></span>
+        <div class="d-flex justify-content-around">
+            <div class="row justify-content-center ">
+                <div class="col-xs-12 m-3 ">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">History</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
 
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
-                  </span>
-                </span>
-              </a>
-			  
-          </div>
-          <div class="col-xs-12 m-3">
-            <a href="#" class="btn btn-lg btn-primary" id="getOS">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-history fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Info</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Random story</span>
-                  </span>
-                </span>
-              </a>
-          </div>
-          <div class="col-xs-12  m-3">
-            <a href="#" class="btn btn-lg btn-warning " id="getDNS">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Landing pads</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Account requested</span>
-                  </span>
-                </span>
-              </a>    
+                </div>
+                <div class="col-xs-12 m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Infos</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12  m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Landing pads</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-	</div>
-				
 
 
-		<div class="d-flex justify-content-center "  >
-        <div class="row justify-content-center ">
-          <div class="col-xs-12 m-3 ">
-            <a href="#" class="btn btn-lg btn-primary" id="getIP">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-space-shuttle fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1" href="javascript:;" data-click="swal-info"><b>Mssions</b></span>
 
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Check</span>
-                  </span>
-                </span>
-              </a>
-			  
-          </div>
-          <div class="col-xs-12 m-3">
-            <a href="#" class="btn btn-lg btn-primary" id="getOS">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-history fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Payloads</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Random story</span>
-                  </span>
-                </span>
-              </a>
-          </div>
-          <div class="col-xs-12  m-3">
-            <a href="#" class="btn btn-lg btn-warning " id="getDNS">
-                <span class="d-flex align-items-center text-left">
-                  <i class="fas fa-low-vision  fa-3x mr-3 text-black"></i>
-                  <span>
-                    <span class="d-block mb-n1"><b>Rockets</b></span>
-                    <span class="f-s-12 f-w-600 text-white-transparent-7">Account requested</span>
-                  </span>
-                </span>
-              </a>    
+        <div class="d-flex justify-content-center ">
+            <div class="row justify-content-center ">
+                <div class="col-xs-12 m-3 ">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Launches</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Launch pads</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12  m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Missions</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-	</div>
 
-
-
-		<div class="d-flex justify-content-center mb-5"  >
-        <div class="row justify-content-center ">
-          <div class="col-xs-12 m-3 ">
-			<div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
-          </div>
-          <div class="col-xs-12 m-3">
-            <div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
-          </div>
-          <div class="col-xs-12  m-3">
-            <div class="card" style="width: 18rem;">
-			<img class="card-img-top" src="..." alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
+        <div class="d-flex justify-content-center mb-5">
+            <div class="row justify-content-center ">
+                <div class="col-xs-12 m-3 ">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="../../static/img/background.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Payloads</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Rockets</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12  m-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Roadsters</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-	</div>
-</section>
+    </section>
 
 
 
-<!-- end buttons -->
+    <!-- end buttons -->
 
 
-<!-- END CONTENT -->
+    <!-- END CONTENT -->
 
 
 
-    
-	<!-- begin #footer -->
-	<div id="footer" class="footer">
-		<!-- begin container -->
-		<div class="container">
-			<!-- begin row -->
-			<div class="row">
-				<!-- begin col-3 -->
-				<div class="col-md-3 col-6">
-					<!-- begin section-container -->
-					<div class="section-container">
-						<h4 class="footer-title">Links</h4>
-						<ul class="categories">
-							<li><a href="#">SpaceX</a></li>
-							<li><a href="#">Nasa</a></li>
-						</ul>
-					</div>
-					<!-- end section-container -->
-				</div>
-				<!-- end col-3 -->
-				<!-- begin col-3 -->
-				<div class="col-md-3 col-6">
-					<!-- begin section-container -->
-					<div class="section-container">
-						<h4 class="footer-title">Archives</h4>
-						<ul class="archives">
-							<li><a href="#">June 2018</a> <span class="total">(102)</span></li>
-							<li><a href="#">May 2018</a> <span class="total">(46)</span></li>
-							<li><a href="#">April 2018</a> <span class="total">(84)</span></li>
-							
-						</ul>
-					</div>
-					<!-- end section-container -->
-				</div>
-				<!-- end col-3 -->
-				<!-- begin col-3 -->
-				<div class="col-md-3 col-6">
-					<!-- begin section-container -->
-					<div class="section-container">
-						<h4 class="footer-title">Recent Posts</h4>
-						<ul class="recent-post">
-							<li>
-								<h4>
-									<a href="#">Nam ut urna hendrerit</a>
-									<span class="time">February 22, 2018</span>
-								</h4>
-							</li>
-							<li>
-								<h4>
-									<a href="#">Class aptent taciti sociosqu</a>
-									<span class="time">July 15, 2018</span>
-								</h4>
-							</li>
-							<li>
-								<h4>
-									<a href="#">Donec rhoncus arcu</a>
-									<span class="time">March 21, 2018</span>
-								</h4>
-							</li>
-						</ul>
-					</div>
-					<!-- end section-container -->
-				</div>
-				<!-- end col-3 -->
-				<!-- begin col-3 -->
-				<div class="col-md-3 col-6">
-					<div class="section-container">
-						<h4 class="footer-title">Contact </h4>
-						<address>
+
+    <!-- begin #footer -->
+    <div id="footer" class="footer">
+        <!-- begin container -->
+        <div class="container">
+            <!-- begin row -->
+            <div class="row">
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-6">
+                    <!-- begin section-container -->
+                    <div class="section-container">
+                        <h4 class="footer-title">Links</h4>
+                        <ul class="categories">
+                            <li><a href="#">SpaceX</a></li>
+                            <li><a href="#">Nasa</a></li>
+                        </ul>
+                    </div>
+                    <!-- end section-container -->
+                </div>
+                <!-- end col-3 -->
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-6">
+                    <!-- begin section-container -->
+                    <div class="section-container">
+                        <h4 class="footer-title">Archives</h4>
+                        <ul class="archives">
+                            <li><a href="#">June 2018</a> <span class="total">(102)</span></li>
+                            <li><a href="#">May 2018</a> <span class="total">(46)</span></li>
+                            <li><a href="#">April 2018</a> <span class="total">(84)</span></li>
+
+                        </ul>
+                    </div>
+                    <!-- end section-container -->
+                </div>
+                <!-- end col-3 -->
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-6">
+                    <!-- begin section-container -->
+                    <div class="section-container">
+                        <h4 class="footer-title">Recent Posts</h4>
+                        <ul class="recent-post">
+                            <li>
+                                <h4>
+                                    <a href="#">Nam ut urna hendrerit</a>
+                                    <span class="time">February 22, 2018</span>
+                                </h4>
+                            </li>
+                            <li>
+                                <h4>
+                                    <a href="#">Class aptent taciti sociosqu</a>
+                                    <span class="time">July 15, 2018</span>
+                                </h4>
+                            </li>
+                            <li>
+                                <h4>
+                                    <a href="#">Donec rhoncus arcu</a>
+                                    <span class="time">March 21, 2018</span>
+                                </h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end section-container -->
+                </div>
+                <!-- end col-3 -->
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-6">
+                    <div class="section-container">
+                        <h4 class="footer-title">Contact </h4>
+                        <address>
 							<strong>thibaud.a@protonmail.com</strong><br />
 							<br />
 							<strong>Projects</strong><br />
 							<a href="https://www.github.com/athd92" target="_blank">Gihub : athd92</a>
 						</address>
-					</div>
-					<!-- end section-container -->
-				</div>
-				<!-- end col-3 -->
-			</div>
-			<!-- end row -->
-		</div>
-		<!-- end container -->
-	</div>
-	<!-- end #footer -->
-	
-	<!-- begin #footer-copyright -->
-	<div id="footer-copyright" class="footer-copyright">
-		<!-- begin container -->
-		<div class="container">
-			<span class="fab fa-creative-commons"> 2020 Creative-commons</span>
-			<ul class="social-media-list mt-2 mt-sm-0 float-none float-sm-right">
-				<li><a href="#"><i class="fab fa-linkedin fa-lg" target="_blank"></i></a></li>
-				<li><a href="https://www.github.com/athd92" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
-				
-			</ul>
-		</div>
-		<!-- end container -->
-	</div>
-	<!-- end panel -->
-			{% if user.is_authenticated%}
-			{% else %}
-			<div class="alert bg-inverse-transparent-9 text-white position-fixed rounded-0 position-fixed mb-0 d-md-flex align-items-center pl-xl-5 pr-xl-5 pt-xl-4 pt-4 pb-xl-4" style="left: 0; right: 0; bottom: 0; z-index: 1020;">
-				<div class="flex-fill">
-					<h4>This website uses cookies</h4>
-					<p class="mb-0">
-						We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
-					</p>
-				</div>
-				<div class="pl-xl-4 pt-xl-0 pt-3">
-					<a href="#" class="btn btn-outline-white btn-lg width-150" data-dismiss="alert">Accept</a>
-				</div>
-			</div>
-		</div>
-		{%endif%}
-		<!-- end #content -->
+                    </div>
+                    <!-- end section-container -->
+                </div>
+                <!-- end col-3 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end #footer -->
+
+    <!-- begin #footer-copyright -->
+    <div id="footer-copyright" class="footer-copyright">
+        <!-- begin container -->
+        <div class="container">
+            <span class="fab fa-creative-commons"> 2020 Creative-commons</span>
+            <ul class="social-media-list mt-2 mt-sm-0 float-none float-sm-right">
+                <li><a href="#"><i class="fab fa-linkedin fa-lg" target="_blank"></i></a></li>
+                <li><a href="https://www.github.com/athd92" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
+
+            </ul>
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end panel -->
+    {% if user.is_authenticated%} {% else %}
+    <div class="alert bg-inverse-transparent-9 text-white position-fixed rounded-0 position-fixed mb-0 d-md-flex align-items-center pl-xl-5 pr-xl-5 pt-xl-4 pt-4 pb-xl-4" style="left: 0; right: 0; bottom: 0; z-index: 1020;">
+        <div class="flex-fill">
+            <h4>This website uses cookies</h4>
+            <p class="mb-0">
+                We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information
+                that you’ve provided to them or that they’ve collected from your use of their services.
+            </p>
+        </div>
+        <div class="pl-xl-4 pt-xl-0 pt-3">
+            <a href="#" class="btn btn-outline-white btn-lg width-150" data-dismiss="alert">Accept</a>
+        </div>
+    </div>
+    </div>
+    {%endif%}
+    <!-- end #content -->
 
 
-	<!-- end #footer-copyright -->
-	
-    
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="{% static 'color_admin_v4.6/frontend/template/assets/js/blog/app.min.js'%}"></script>
-	<!-- ================== END BASE JS ================== -->
-	<script src="{% static '/js/index.js'%}"></script>
-	<script src="{% static '/js/index-anim.js'%}"></script>
+    <!-- end #footer-copyright -->
 
 
-	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/gritter/js/jquery.gritter.js'%}"></script>
-	<script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/sweetalert/dist/sweetalert.min.js'%}"></script>
-	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/demo/ui-modal-notification.demo.js'%}"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="{% static 'color_admin_v4.6/frontend/template/assets/js/blog/app.min.js'%}"></script>
+    <!-- ================== END BASE JS ================== -->
+    <script src="{% static '/js/index.js'%}"></script>
+    <script src="{% static '/js/index-anim.js'%}"></script>
 
-{% comment %} 
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/app.min.js'%}"></script>
-	<script src="{% static 'color_admin_v4.6/admin/template/assets/js/theme/default.min.js'%}"></script>
-	<!-- ================== END BASE JS ================== --> {% endcomment %}
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/gritter/js/jquery.gritter.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/sweetalert/dist/sweetalert.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/js/demo/ui-modal-notification.demo.js'%}"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    {% comment %}
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/js/app.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/js/theme/default.min.js'%}"></script>
+    <!-- ================== END BASE JS ================== -->{% endcomment %}
 
 
 </body>
+
 </html>
