@@ -7,6 +7,7 @@ import json
 from django.http import JsonResponse, FileResponse, HttpResponse
 from .forms import UserCustomLoginForm, ContactForm, SearchForm
 import time
+import os
 import whois
 import io
 from reportlab.pdfgen import canvas
@@ -211,7 +212,7 @@ def search(request):
             print(result)
             final = []
             for i in result:
-                print('')
+                print("")
                 x = i.all_datas
                 try:
                     for item in x.items():
@@ -220,7 +221,6 @@ def search(request):
                 except:
                     pass
 
-            
             user = request.user.username
             os = request.user_agent.os.family  # returns 'iOS'
             user_selected = User.objects.get(username=user)
@@ -237,3 +237,19 @@ def search(request):
 
 def render_category(request):
     pass
+
+
+def picture(request):
+
+    API_KEY = os.environ.get("API_KEY_NASA")
+    resp = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={API_KEY}")
+    resp = resp.json()
+    context = {
+        "title": resp.get("title"),
+        "date": resp.get('date'),
+        "url": resp.get("url"),
+        "explanation": resp.get("explanation"),
+    }
+    print(context)
+    return render(request, "beware/picture.html", context)
+

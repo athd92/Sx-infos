@@ -34,5 +34,6 @@ urlpatterns = [
     path('getdns/', views.getdns, name="getdns"),
     path('getreferer/', views.getreferer, name="getreferer"),
     path('results/', views.results, name='results'),
-    path('search/', views.search, name='search')
+    path('search/', views.search, name='search'),
+    path('picture/', views.picture, name='picture')
 ]
