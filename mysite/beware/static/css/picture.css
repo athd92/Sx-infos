@@ -1,0 +1,9 @@
+img {
+    width: 30vw;
+    /* You can set the dimensions to whatever you want */
+    height: auto;
+    object-fit: cover;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+}

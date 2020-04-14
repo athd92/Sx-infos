@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static%}
+    <meta charset="utf-8" />
+    <title>Color Admin | Dashboard V3</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="{% static 'color_admin_v4.6/admin/template/assets/css/default/app.min.css'%}" rel="stylesheet" />
+    <!-- ================== END BASE CSS STYLE ================== -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/picture.css'%}">
+    <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="{% static 'color_admin_v4.6/admin/template/assets/plugins/jvectormap-next/jquery-jvectormap.css'%}" rel="stylesheet" />
+    <link href="{% static 'color_admin_v4.6/admin/template/assets/plugins/nvd3/build/nv.d3.css'%}" rel="stylesheet" />
+    <link href="{% static 'color_admin_v4.6/admin/template/assets/plugins/bootstrap-daterangepicker/daterangepicker.css'%}" rel="stylesheet" />
+    <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+</head>
+
+<body>
+    <!-- begin #page-loader -->
+    <div id="page-loader" class="fade show">
+        <span class="spinner"></span>
+    </div>
+    <!-- end #page-loader -->
+
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+        <!-- begin #header -->
+        <div id="header" class="header navbar-default">
+            <!-- begin navbar-header -->
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Space-discover.</b>com</a>
+                <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+            </div>
+            <!-- end navbar-header -->
+            <!-- begin header-nav -->
+
+
+            <ul class="navbar-nav navbar-right">
+                {% comment %}
+                <li class="navbar-form">
+                    <form action="" method="POST" name="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter keyword" />
+                            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </li> {% endcomment %}
+                <li class="dropdown">
+                    {% comment %}
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+                        <i class="fa fa-bell"></i>
+                        <span class="label">5</span>
+                    </a> {% endcomment %}
+                    <div class="dropdown-menu media-list dropdown-menu-right">
+                        <div class="dropdown-header">NOTIFICATIONS (5)</div>
+                        <a href="javascript:;" class="dropdown-item media">
+                            <div class="media-left">
+                                <i class="fa fa-bug media-object bg-silver-darker"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+                                <div class="text-muted f-s-10">3 minutes ago</div>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="dropdown-item media">
+                            <div class="media-left">
+                                <img src="../assets/img/user/user-1.jpg" class="media-object" alt="" />
+                                <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">John Smith</h6>
+                                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                                <div class="text-muted f-s-10">25 minutes ago</div>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="dropdown-item media">
+                            <div class="media-left">
+                                <img src="../assets/img/user/user-2.jpg" class="media-object" alt="" />
+                                <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading">Olivia</h6>
+                                <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                                <div class="text-muted f-s-10">35 minutes ago</div>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="dropdown-item media">
+                            <div class="media-left">
+                                <i class="fa fa-plus media-object bg-silver-darker"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading"> New User Registered</h6>
+                                <div class="text-muted f-s-10">1 hour ago</div>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="dropdown-item media">
+                            <div class="media-left">
+                                <i class="fa fa-envelope media-object bg-silver-darker"></i>
+                                <i class="fab fa-google text-warning media-object-icon f-s-14"></i>
+                            </div>
+                            <div class="media-body">
+                                <h6 class="media-heading"> New Email From John</h6>
+                                <div class="text-muted f-s-10">2 hour ago</div>
+                            </div>
+                        </a>
+                        <div class="dropdown-footer text-center">
+                            <a href="javascript:;">View more</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown navbar-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{% static 'img/perso.gif'%}" alt="" />
+                        <span class="d-none d-md-inline">{{user}}</span> <b class="caret"></b>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="/" class="dropdown-item">Homepage</a> {% comment %} <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
+                        <a href="javascript:;" class="dropdown-item">Calendar</a>
+                        <a href="javascript:;" class="dropdown-item">Setting</a> {% endcomment %}
+                        <div class="dropdown-divider"></div>
+                        <a href="/logout/" class="dropdown-item">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- end header-nav -->
+        </div>
+        <!-- end #header -->
+
+
+        <!-- begin #content -->
+
+        <!-- begin #datepicker -->
+
+        <div class="container-fluid mt-3">
+            <div class="container-fluid">
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <div class="input-group date" id="datetimepicker1">
+                            <input type="text" class="form-control" />
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end #datepicker -->
+
+            <div class="text-center">
+                <h3>{{title}}</h3>
+                <br/>
+                <h4>Picture date: {{date}}</h4>
+            </div>
+        </div>
+
+
+        <div class="container-fluid mb-3">
+            <div class="text-center">
+                <img src="{{url}}" alt=""></div>
+        </div>
+
+        <div class="container">
+            <div class="text-center p-5">
+                <p>{{explanation}}</p>
+            </div>
+        </div>
+
+
+        <!-- end #content -->
+
+
+        <!-- begin scroll to top btn -->
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+        <!-- end scroll to top btn -->
+    </div>
+    <!-- end page container -->
+
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/js/app.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/js/theme/default.min.js'%}"></script>
+    <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/d3/d3.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/nvd3/build/nv.d3.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/jvectormap-next/jquery-jvectormap.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/apexcharts/dist/apexcharts.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/moment/min/moment.min.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/plugins/bootstrap-daterangepicker/daterangepicker.js'%}"></script>
+    <script src="{% static 'color_admin_v4.6/admin/template/assets/js/demo/dashboard-v3.js'%}"></script>
+    <script src="{% static 'js/picture.js'%}"></script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+</body>
+
+</html>
